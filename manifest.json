@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Not Answered Alert",
+  "version": "3.0",
+  "description": "Watches HelpDeskEddy Not Answered count and sends Telegram alert",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://avtobots.helpdeskeddy.com/*",
+    "https://api.telegram.org/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://avtobots.helpdeskeddy.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Not Answered Alert</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 280px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a1f2e 0%, #0f1117 100%);
+      border-bottom: 1px solid #2d3748;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #48bb78;
+      box-shadow: 0 0 6px #48bb78;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .header h1 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #f7fafc;
+    }
+
+    .body {
+      padding: 14px 16px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #1a202c;
+      font-size: 12px;
+    }
+
+    .row:last-child { border-bottom: none; }
+    .label { color: #a0aec0; }
+    .value { color: #68d391; font-weight: 600; }
+    .value.warn { color: #fc8181; }
+
+    .footer {
+      padding: 10px 16px;
+      font-size: 10px;
+      color: #4a5568;
+      text-align: center;
+      border-top: 1px solid #1a202c;
+    }
+
+    .config-note {
+      background: #1a202c;
+      border-left: 3px solid #4299e1;
+      padding: 8px 10px;
+      font-size: 11px;
+      color: #90cdf4;
+      margin-top: 4px;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="dot"></div>
+    <h1>Not Answered Alert → Telegram</h1>
+  </div>
+  <div class="body">
+    <div class="row">
+      <span class="label">Status</span>
+      <span class="value" id="status">Watching…</span>
+    </div>
+    <div class="row">
+      <span class="label">Page detected</span>
+      <span class="value" id="page-status">Checking…</span>
+    </div>
+    <div class="row">
+      <span class="label">Bot token</span>
+      <span class="value" id="token-status">—</span>
+    </div>
+    <div class="config-note" id="config-note" style="display:none">
+      ⚠️ Open <strong>background.js</strong> and replace<br>
+      <code>YOUR_BOT_TOKEN_HERE</code> and <code>YOUR_CHAT_ID_HERE</code>
+    </div>
+  </div>
+  <div class="footer">Monitors HelpDeskEddy every DOM change + 10 s fallback</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
